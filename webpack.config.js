@@ -4,7 +4,6 @@ const DEV_PORT = process.env.PORT || 4444;
 const webpack = require("webpack");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const FlowWebpackPlugin = require("flow-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = [
@@ -40,7 +39,6 @@ module.exports = [
         "process.env.NODE_ENV": JSON.stringify("production"),
         API_HOST: process.env.PROD_APIHOST
       }),
-      new FlowWebpackPlugin(),
       new webpack.optimize.UglifyJsPlugin({
         sourceMap: process.env.NODE_ENV === "production" ? null : true
       }),
