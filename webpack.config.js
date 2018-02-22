@@ -33,14 +33,14 @@ module.exports = [
         }
       ]
     },
-    devtool: process.env.NODE_ENV === "production" ? null : "inline-source-map",
+    devtool: process.env.NODE_ENV === "production" ? "eval" : "inline-source-map",
     plugins: [
       new webpack.DefinePlugin({
         "process.env.NODE_ENV": JSON.stringify("production"),
         API_HOST: process.env.PROD_APIHOST
       }),
       new webpack.optimize.UglifyJsPlugin({
-        sourceMap: process.env.NODE_ENV === "production" ? null : true
+        sourceMap: process.env.NODE_ENV === "production" ? false : true
       }),
       new CleanWebpackPlugin(["public"]),
       new HtmlWebpackPlugin({
