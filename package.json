@@ -1,0 +1,9 @@
+{
+  "name": "nadeshiko",
+  "version": "0.0.1",
+  "description": "Nadeshiko is strongest RSS reader",
+  "main": "index.js",
+  "author": "himanoa <matsunoappy@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
