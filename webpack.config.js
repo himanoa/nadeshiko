@@ -33,7 +33,8 @@ module.exports = [
         }
       ]
     },
-    devtool: process.env.NODE_ENV === "production" ? "eval" : "inline-source-map",
+    devtool:
+      process.env.NODE_ENV === "production" ? "eval" : "inline-source-map",
     plugins: [
       new webpack.DefinePlugin({
         "process.env.NODE_ENV": JSON.stringify("production"),
@@ -49,31 +50,5 @@ module.exports = [
         inject: "body"
       })
     ]
-  },
-  {
-    entry: {
-      style: __dirname + "/stylesheets/style.scss" // トランスパイル対象
-    },
-    output: {
-      path: __dirname + "/public", // 出力先ディレクトリ
-      filename: "[name].css"
-    },
-    module: {
-      rules: [
-        {
-          test: /\.scss$/,
-          loader: ExtractTextPlugin.extract({
-            fallback: "style-loader",
-            use: ["css-loader", "sass-loader"]
-          })
-        }
-      ]
-    },
-    plugins: [new ExtractTextPlugin("[name].css")],
-    resolve: {
-      alias: {
-        $: path.join(__dirname, "node_modules/")
-      }
-    }
   }
 ];
