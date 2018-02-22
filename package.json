@@ -5,5 +5,22 @@
   "main": "index.js",
   "author": "himanoa <matsunoappy@gmail.com>",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "devDependencies": {
+    "css-loader": "^0.28.9",
+    "node-sass": "^4.7.2",
+    "prettier": "^1.10.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
+    "redux": "^3.7.2",
+    "sass-loader": "^6.0.6",
+    "tsdoc": "^0.0.4",
+    "tslint": "^5.9.1",
+    "tslint-config-prettier": "^1.8.0",
+    "tslint-plugin-prettier": "^1.3.0",
+    "typescript": "^2.7.2",
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "^2.11.1"
+  }
 }
