@@ -9,7 +9,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = [
   {
     entry: {
-      app: ["./src/index.ts"]
+      app: ["./src/index.tsx"]
     },
     output: {
       filename: "[name].bundle.js",
@@ -28,7 +28,7 @@ module.exports = [
     module: {
       rules: [
         {
-          test: /\.ts$/,
+          test: /\.tsx?$/,
           use: "ts-loader"
         }
       ]

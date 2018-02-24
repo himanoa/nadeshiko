@@ -2,7 +2,6 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "jsx": "react",
     "module": "es2015",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
@@ -17,7 +16,8 @@
       "es6",
       "es7",
       "dom"
-    ]
+    ],
+    "jsx": "react"
   },
   "exclude": [
     "dist",
