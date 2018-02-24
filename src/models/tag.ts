@@ -1,8 +1,10 @@
 export interface Tag {
+  id?: number;
   name: string;
   rssFeedId: number;
+  createtAt: number;
 }
 
 export const scheme = {
-  tag: "name, rssFeedId"
+  tag: "id++, name, rssFeedId, createtAt"
 };
