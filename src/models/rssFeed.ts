@@ -5,6 +5,6 @@ export interface RSSFeed {
   updateInterval: number;
 }
 
-export const scheme = {
+export default {
   rssFeeds: "id++, name, url, updateInterval"
 };

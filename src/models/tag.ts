@@ -5,6 +5,6 @@ export interface Tag {
   createtAt: number;
 }
 
-export const scheme = {
+export default {
   tag: "id++, name, rssFeedId, createtAt"
 };

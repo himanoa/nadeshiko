@@ -9,7 +9,7 @@ export interface Article {
   link_url: string;
 }
 
-export const scheme = {
+export default {
   articles:
     "id++, rssFeedId, title, description, author, guid, pubdate, link_url"
 };

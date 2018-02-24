@@ -4,6 +4,6 @@ export interface Bookmark {
   createdAt: number;
 }
 
-export const scheme = {
+export default {
   rssFeeds: "id++, articleId, createdAt"
 };
