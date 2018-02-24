@@ -1,22 +1,22 @@
-import RssFeed from "./models/rssFeed";
-import Article from "./models/article";
-import Bookmark from "./models/bookmark";
-import Tag from "./models/tag";
+import { RssFeed, scheme as rssFeedScheme } from "./models/rssFeed";
+import { Article, scheme as articleScheme } from "./models/article";
+import { Bookmark, scheme as bookmarkScheme } from "./models/bookmark";
+import { Tag, scheme as tagScheme } from "./models/tag";
 import Dexie from "dexie";
 
 class NadeshikoDatabase extends Dexie {
-  rssFeeds: Dexie.Table<RssFeed.IRssFeed, number>;
-  articles: Dexie.Table<Article.IArticle, number>;
-  bookmarks: Dexie.Table<Bookmark.IBookmark, number>;
-  tags: Dexie.Table<Tag.ITag, number>;
+  rssFeeds: Dexie.Table<RssFeed, number>;
+  articles: Dexie.Table<Article, number>;
+  bookmarks: Dexie.Table<Bookmark, number>;
+  tags: Dexie.Table<Tag, number>;
 
   constructor() {
     super("NadeshikoDatabase");
     this.version(1).stores({
-      ...RssFeed.scheme,
-      ...Article.scheme,
-      ...Bookmark.scheme,
-      ...Tag.scheme
+      ...articleScheme,
+      ...articleScheme,
+      ...bookmarkScheme,
+      ...tagScheme
     });
   }
 }
