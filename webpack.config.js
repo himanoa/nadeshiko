@@ -25,6 +25,9 @@ module.exports = [
       historyApiFallback: true,
       port: DEV_PORT
     },
+    resolve: {
+      extensions: ['.ts', '.tsx', '.js', 'jsx']
+    },
     module: {
       rules: [
         {
