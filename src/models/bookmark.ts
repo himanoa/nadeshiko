@@ -1,9 +1,9 @@
 export interface Bookmark {
   id?: number;
-  article_id: number;
-  created_at: number;
+  articleId: number;
+  createdAt: number;
 }
 
 export const scheme = {
-  rssFeeds: "id++, article_id, created_at"
+  rssFeeds: "id++, articleId, createdAt"
 };
