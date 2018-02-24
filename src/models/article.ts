@@ -11,5 +11,5 @@ export interface Article {
 
 export default {
   articles:
-    "id++, rssFeedId, title, description, author, guid, pubdate, link_url"
+    "++id, rssFeedId, title, description, author, guid, pubdate, link_url"
 };

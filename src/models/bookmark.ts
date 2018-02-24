@@ -5,5 +5,5 @@ export interface Bookmark {
 }
 
 export default {
-  bookmarks: "id++, articleId, createdAt"
+  bookmarks: "++id, articleId, createdAt"
 };

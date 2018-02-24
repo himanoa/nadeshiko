@@ -6,5 +6,5 @@ export interface Tag {
 }
 
 export default {
-  tag: "id++, name, rssFeedId, createtAt"
+  tag: "++id, name, rssFeedId, createtAt"
 };

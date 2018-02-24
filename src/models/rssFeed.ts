@@ -6,5 +6,5 @@ export interface RSSFeed {
 }
 
 export default {
-  rssFeeds: "id++, name, url, updateInterval"
+  rssFeeds: "++id, name, url, updateInterval"
 };
