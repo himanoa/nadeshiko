@@ -5,5 +5,5 @@ export interface Bookmark {
 }
 
 export default {
-  rssFeeds: "id++, articleId, createdAt"
+  bookmarks: "id++, articleId, createdAt"
 };

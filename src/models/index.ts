@@ -1,6 +1,6 @@
-import * as article from "./article";
-import * as rssFeed from "./rssFeed";
-import * as bookmark from "./bookmark";
-import * as tag from "./tag";
+import article from "./article";
+import rssFeed from "./rssFeed";
+import bookmark from "./bookmark";
+import tag from "./tag";
 
-export default { ...article, ...rssFeed, ...bookmark, ...tag };
+export const scheme = { ...article, ...rssFeed, ...bookmark, ...tag };
