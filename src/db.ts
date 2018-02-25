@@ -4,13 +4,20 @@ import { Bookmark, scheme as bookmarkScheme } from "./models/bookmark";
 import { Tag, scheme as tagScheme } from "./models/tag";
 import Dexie from "dexie";
 
-class NadeshikoDatabase extends Dexie {
-  rssFeeds: Dexie.Table<RssFeed, number>;
-  articles: Dexie.Table<Article, number>;
-  bookmarks: Dexie.Table<Bookmark, number>;
-  tags: Dexie.Table<Tag, number>;
+export class NadeshikoDatabase extends Dexie {
+  public rssFeeds: Dexie.Table<RssFeed, number>;
+  public articles: Dexie.Table<Article, number>;
+  public bookmarks: Dexie.Table<Bookmark, number>;
+  public tags: Dexie.Table<Tag, number>;
+  private static _instance: NadeshikoDatabase;
 
-  constructor() {
+  public static get instance(): NadeshikoDatabase {
+    if (!this._instance) {
+      this._instance = new NadeshikoDatabase();
+    }
+    return this._instance;
+  }
+  private constructor() {
     super("NadeshikoDatabase");
     this.version(1).stores({
       ...articleScheme,
@@ -21,4 +28,4 @@ class NadeshikoDatabase extends Dexie {
   }
 }
 
-export default new NadeshikoDatabase();
+export default NadeshikoDatabase.instance;
