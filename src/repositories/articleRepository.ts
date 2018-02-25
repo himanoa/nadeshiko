@@ -6,7 +6,7 @@ export class ArticleRepository {
   private _db: Dexie.Table<Article, number>;
   private tableName: string = "articles";
   get db(): Dexie.Table<Article, number> {
-    return this.db;
+    return this._db;
   }
   constructor(db = NadeshikoDatabase.instance) {
     this._db = db.articles;

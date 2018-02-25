@@ -16,7 +16,8 @@
     "lib": [
       "es6",
       "es7",
-      "dom"
+      "dom",
+      "ES2015"
     ],
     "jsx": "react"
   },
