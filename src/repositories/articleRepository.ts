@@ -8,8 +8,8 @@ export class ArticleRepository {
   get db(): Dexie.Table<Article, number> {
     return this._db;
   }
-  constructor(db = NadeshikoDatabase.instance) {
-    this._db = db.articles;
+  constructor() {
+    this._db = NadeshikoDatabase.instance.articles;
   }
 
   whereByRssFeedId(id: number): Dexie.Collection<Article, number> {
