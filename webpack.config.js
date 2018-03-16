@@ -9,7 +9,8 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = [
   {
     entry: {
-      app: ["./src/index.tsx"]
+      app: ["./src/index.tsx"],
+      rssWorker: ["./src/workers/rssImportWorker.ts"]
     },
     output: {
       filename: "[name].bundle.js",
@@ -26,7 +27,7 @@ module.exports = [
       port: DEV_PORT
     },
     resolve: {
-      extensions: ['.ts', '.tsx', '.js', 'jsx']
+      extensions: [".ts", ".tsx", ".js", "jsx"]
     },
     module: {
       rules: [
