@@ -27,7 +27,10 @@ module.exports = [
       port: DEV_PORT
     },
     resolve: {
-      extensions: [".ts", ".tsx", ".js", "jsx"]
+      extensions: [".ts", ".tsx", ".js", "jsx"],
+      alias: {
+        joi: "joi-browser"
+      }
     },
     module: {
       rules: [
