@@ -1,5 +1,3 @@
-import { rssArticle } from "../types/rssArticle";
-
 export interface Article {
   id?: number;
   rssFeedId: number;
