@@ -1,3 +1,3 @@
 # Nadeshiko
 
-Nadeshiko is strongest RSS Reader
+Nadeshiko is strongest RSS Reader!
