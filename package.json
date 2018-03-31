@@ -46,7 +46,8 @@
     "joi-browser": "^13.0.1",
     "re-bulma": "^0.4.6",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "yup": "^0.24.1"
   },
   "jest": {
     "transform": {
