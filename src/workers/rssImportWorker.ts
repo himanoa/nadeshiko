@@ -1,5 +1,6 @@
 import axios from "axios";
 import { YQLRssResponse } from "../types/yql";
+import { fromRssArticle } from "../models/article"
 let timer;
 const q = "select * from rss where url in ('https://blog.himanoa.net/rss')";
 onmessage = function(e) {

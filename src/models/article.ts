@@ -1,5 +1,3 @@
-import { either } from "fp-ts";
-
 import { RssArticle } from "../types/rssArticle";
 import { RssFeed } from "./rssFeed";
 
@@ -18,11 +16,9 @@ export const scheme = {
     "++id, rssFeedId, title, description,  pubdate, linkUrl, isAlreadyRead"
 };
 
-const _fromRssArticleValidation = (feed: RssFeed, article: RssArticle) => {};
 export const fromRssArticle = (feed: RssFeed, article: RssArticle): Article => {
   if (feed.id == null) {
-    // TODO: Not Implement
-    throw new Error("pattern");
+    throw new Error("parse error");
   }
   return {
     rssFeedId: feed.id,
