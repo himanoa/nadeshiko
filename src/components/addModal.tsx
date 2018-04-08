@@ -1,4 +1,10 @@
 import * as React from "react";
+
+export type Props = {
+  isActive: boolean;
+  hide: () => void;
+};
+
 import {
   Field,
   Label,
@@ -16,13 +22,13 @@ import {
   Delete
 } from "bloomer";
 
-export const AddModal = () => (
-  <Modal>
+export const AddModal = (props: Props) => (
+  <Modal {...props}>
     <ModalBackground />
     <ModalCard>
       <ModalCardHeader>
         <ModalCardTitle>Add feed</ModalCardTitle>
-        <Delete />
+        <Delete onClick={props.hide} />
       </ModalCardHeader>
       <ModalCardBody>
         <Field>

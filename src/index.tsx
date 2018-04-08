@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Container, Columns, Column } from "bloomer";
 
 import { App } from "./components/app";
-import { Sidebar } from "./components/sidebar";
+import { Sidebar } from "./containers/sidebar";
 import { NotFound } from "./components/notfound";
 
 const rootElement: HTMLElement | null = document.getElementById("root");
@@ -21,9 +21,8 @@ ReactDOM.render(
       isVCentered
       style={{ "margin-top": "20px", "margin-left": "20px" }}
     >
-      <Column isSize={1}>
-        <Sidebar />
-      </Column>
+      <Column isSize={1} />
+      <Sidebar />
       <Column>
         <Switch>
           <Route exact path="/" component={App} />
