@@ -1,8 +1,3 @@
 import * as React from "react";
-import { Sidebar } from "./sidebar";
 
-export const App = () => (
-  <div>
-    <Sidebar />
-  </div>
-);
+export const App = () => <h1>Hello</h1>;
