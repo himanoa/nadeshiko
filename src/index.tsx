@@ -17,19 +17,20 @@ if (Worker) {
 
 ReactDOM.render(
   <Router>
-    <Container>
-      <Columns isCentered>
-        <Column isSize="1/4">
-          <Sidebar />
-        </Column>
-        <Column>
-          <Switch>
-            <Route exact path="/" component={App} />
-            <Route component={NotFound} />
-          </Switch>
-        </Column>
-      </Columns>
-    </Container>
+    <Columns
+      isVCentered
+      style={{ "margin-top": "20px", "margin-left": "20px" }}
+    >
+      <Column isSize={1}>
+        <Sidebar />
+      </Column>
+      <Column>
+        <Switch>
+          <Route exact path="/" component={App} />
+          <Route component={NotFound} />
+        </Switch>
+      </Column>
+    </Columns>
   </Router>,
   rootElement
 );

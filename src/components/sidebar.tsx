@@ -1,15 +1,15 @@
 import * as React from "react";
 import { Menu, MenuLink, MenuLabel, MenuList } from "bloomer";
-import { link } from "react-router";
+import { Link } from "react-router-dom";
 
 export const Sidebar = () => (
   <Menu>
     <MenuLabel>Genaral</MenuLabel>
-    <MenuLabel>Genaral</MenuLabel>
-    <MenuLabel>Genaral</MenuLabel>
-    <MenuLabel>Genaral</MenuLabel>
-    <MenuLabel>Genaral</MenuLabel>
-    <MenuLabel>Genaral</MenuLabel>
-    <MenuList />
+    <MenuList>
+      <li>
+        <Link to="/sdasd">404</Link>
+      </li>
+    </MenuList>
+    <MenuLabel>Feeds</MenuLabel>
   </Menu>
 );

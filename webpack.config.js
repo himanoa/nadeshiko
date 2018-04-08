@@ -18,19 +18,13 @@ module.exports = [
       path: __dirname + "/dist",
       publicPath: "/"
     },
-    watchOptions: {
-      poll: true
-    },
     devServer: {
       contentBase: "dist/",
       historyApiFallback: true,
       port: DEV_PORT
     },
     resolve: {
-      extensions: [".ts", ".tsx", ".js", "jsx"],
-      alias: {
-        joi: "joi-browser"
-      }
+      extensions: [".ts", ".tsx", ".js", "jsx"]
     },
     module: {
       rules: [
