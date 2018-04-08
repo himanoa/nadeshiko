@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import "bulma";
+import "./styles/index.scss";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Container, Columns, Column } from "bloomer";
 
