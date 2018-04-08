@@ -39,6 +39,7 @@
     "@types/react-dom": "^16.0.4",
     "@types/yup": "^0.24.2",
     "axios": "^0.18.0",
+    "bloomer": "^0.6.3",
     "dexie": "^2.0.2",
     "fp-ts": "^1.2.0",
     "htmlparser2": "^3.9.2",

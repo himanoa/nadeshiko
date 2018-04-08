@@ -578,6 +578,13 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
+bloomer@^0.6.3:
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/bloomer/-/bloomer-0.6.3.tgz#4899cebb1992e934a148df942fbc37ce298e7669"
+  dependencies:
+    classnames "^2.2.5"
+    tslib "^1.7.0"
+
 bluebird@^3.4.7:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
@@ -5068,7 +5075,7 @@ ts-loader@^3.5.0:
     micromatch "^3.1.4"
     semver "^5.0.1"
 
-tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1:
+tslib@^1.7.0, tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1:
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.0.tgz#e37a86fda8cbbaf23a057f473c9f4dc64e5fc2e8"
 
