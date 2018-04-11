@@ -61,6 +61,5 @@ export const AddModal = (props: Props) => (
         </Field>
       </ModalCardFooter>
     </ModalCard>
-    <ModalClose />
   </Modal>
 );
