@@ -56,7 +56,7 @@ export const AddModal = (props: Props) => (
             <Button isColor="primary">Submit</Button>
           </Control>
           <Control>
-            <Button>Cancel</Button>
+            <Button onClick={props.hide}>Cancel</Button>
           </Control>
         </Field>
       </ModalCardFooter>
