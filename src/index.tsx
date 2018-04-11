@@ -8,6 +8,8 @@ import { App } from "./components/app";
 import { Sidebar } from "./containers/sidebar";
 import { NotFound } from "./components/notfound";
 
+import './store'
+
 const rootElement: HTMLElement | null = document.getElementById("root");
 
 if (Worker) {
