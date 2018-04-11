@@ -6,24 +6,22 @@ export type AddFeedPayload = {
   updateInterval: number;
 };
 
-export type Action<T> = {
+export type Action = {
   type: string;
-  payload: T;
+  payload: AddFeedPayload;
 };
 
-export const addFeed = (
-  title: string,
-  feedUrl: string,
-  updateInterval: number
-): Action<AddFeedPayload> => {
-  return {
-    type: ADD_FEED,
-    payload: {
-      title,
-      feedUrl,
-      updateInterval
-    }
-  };
+export const actionCreators = {
+  addFeed: (title: string, feedUrl: string, updateInterval: number): Action => {
+    return {
+      type: ADD_FEED,
+      payload: {
+        title,
+        feedUrl,
+        updateInterval
+      }
+    };
+  }
 };
 
 export type State = {
@@ -32,7 +30,7 @@ export type State = {
 
 export const initialState: State = { feeds: [] };
 
-export default (state: State = initialState, action: Action): State => {
+export const reducer = (state: State = initialState, action: Action): State => {
   switch (action.type) {
     case ADD_FEED: {
       return {

@@ -12,17 +12,21 @@ const rootElement: HTMLElement | null = document.getElementById("root");
 
 if (Worker) {
   const worker = new Worker("rssWorker.bundle.js");
-  worker.postMessage({ payload: { type: "start" } });
+  worker.postMessage({
+    payload: { type: "start", urlHost: "https://google.com" }
+  });
+  const worker2 = new Worker("rssWorker.bundle.js");
+  worker2.postMessage({
+    payload: { type: "start", urlHost: "https://foobar.com" }
+  });
 }
 
 ReactDOM.render(
   <Router>
-    <Columns
-      isVCentered
-      style={{ "margin-top": "20px", "margin-left": "20px" }}
-    >
-      <Column isSize={1} />
-      <Sidebar />
+    <Columns style={{ "margin-top": "20px", "margin-left": "20px" }}>
+      <Column isSize={2}>
+        <Sidebar />
+      </Column>
       <Column>
         <Switch>
           <Route exact path="/" component={App} />
