@@ -1,13 +1,22 @@
-import actionCreatorFactory from "typescript-fsa";
-
 const actionCreator = actionCreatorFactory();
 
-export type addFeedPayload = {
+export const ADD_FEED = "feed/addFeed";
+
+export type AddFeedPayload = {
   title: string;
   feedUrl: string;
   updateInterval: number;
 };
 
 export default {
-  addFeed: actionCreator<addFeedPayload>("feed/add")
+  addFeed: (title: string, feedUrl: string, updateInterval: number) => {
+    return {
+      type: ADD_FEED,
+      payload: {
+        title,
+        feedUrl,
+        updateInterval
+      }
+    };
+  }
 };
