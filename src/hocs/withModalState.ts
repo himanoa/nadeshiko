@@ -1,5 +1,4 @@
-import { compose, withState } from "recompose";
-import { SidebarProps } from "../components/sidebar";
+import {  withState } from "recompose";
 
 export const withAddFeedModalState = withState(
   `isVisibleAddFeedModalDialog`,

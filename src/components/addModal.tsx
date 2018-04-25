@@ -1,8 +1,8 @@
 import * as React from "react";
 
 export type Props = {
-  isActive: boolean;
-  hide: () => void;
+  isVisible: boolean;
+  close: () => void;
 };
 
 import {
@@ -28,7 +28,7 @@ export const AddModal = (props: Props) => (
     <ModalCard>
       <ModalCardHeader>
         <ModalCardTitle>Add feed</ModalCardTitle>
-        <Delete onClick={props.hide} />
+        <Delete onClick={props.close} />
       </ModalCardHeader>
       <ModalCardBody>
         <Field>
@@ -56,7 +56,7 @@ export const AddModal = (props: Props) => (
             <Button isColor="primary">Submit</Button>
           </Control>
           <Control>
-            <Button onClick={props.hide}>Cancel</Button>
+            <Button onClick={props.close}>Cancel</Button>
           </Control>
         </Field>
       </ModalCardFooter>
