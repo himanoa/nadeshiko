@@ -1,7 +1,8 @@
 import * as React from "react";
+import { pure } from "recompose";
 
 export type Props = {
-  isVisible: boolean;
+  visible: boolean;
   close: () => void;
 };
 
@@ -22,8 +23,8 @@ import {
   Delete
 } from "bloomer";
 
-export const AddModal = (props: Props) => (
-  <Modal {...props}>
+export const AddModal = (props: Props): JSX.Element => (
+  <Modal isActive={props.visible} {...props}>
     <ModalBackground />
     <ModalCard>
       <ModalCardHeader>

@@ -2,7 +2,7 @@ import * as React from "react";
 import { AddModal } from "../components/addModal";
 
 export interface State {
-  visible?: boolean;
+  visible: boolean;
 }
 
 export interface Props {}
@@ -17,16 +17,13 @@ export const withAddFeedModal = InnerComponent =>
       return (
         <div>
           <InnerComponent
-            visibleModal={function() {
+            visibleModal={() => {
               this.setState({ visible: true } as State);
             }}
           />
           <AddModal
-            {...this.props as any}
-            close={function() {
-              this.setState({ visible: false } as State);
-            }}
-            isVisible={this.state.visible}
+            visible={this.state.visible}
+            close={() => this.setState({ visible: false })}
           />
         </div>
       );

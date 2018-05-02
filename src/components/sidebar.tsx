@@ -2,11 +2,8 @@ import * as React from "react";
 import { Menu, MenuLink, MenuLabel, MenuList, Icon } from "bloomer";
 import { Link } from "react-router-dom";
 
-import { AddModal } from "./addModal";
-
 export interface SidebarProps {
-  isVisibleAddFeedModalDialog: boolean;
-  updateIsVisibleAddFeedModalDialog: (visible: boolean) => void;
+  visibleModal: () => void;
 }
 
 export const Sidebar = (props: SidebarProps) => (
@@ -20,18 +17,10 @@ export const Sidebar = (props: SidebarProps) => (
       </MenuList>
       <MenuLabel>
         Feeds
-        <a onClick={() => props.updateIsVisibleAddFeedModalDialog(true)}>
-          <Icon
-            isSize="small"
-            className="fa fa-plus"
-            onClick={() => console.log("hello")}
-          />
+        <a onClick={props.visibleModal}>
+          <Icon isSize="small" className="fa fa-plus" />
         </a>
       </MenuLabel>
     </Menu>
-    <AddModal
-      isActive={props.isVisibleAddFeedModalDialog}
-      hide={() => props.updateIsVisibleAddFeedModalDialog(false)}
-    />
   </div>
 );
