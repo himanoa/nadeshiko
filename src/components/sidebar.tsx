@@ -18,7 +18,7 @@ export const Sidebar = (props: SidebarProps) => (
       <MenuLabel>
         Feeds
         <a onClick={props.visibleModal}>
-          <Icon isSize="small" className="fa fa-plus" />
+          <Icon isSize="medium" isAlign="right" className="fa fa-plus" />
         </a>
       </MenuLabel>
     </Menu>

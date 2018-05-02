@@ -1,14 +1,16 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import "./styles/index.scss";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Container, Columns, Column } from "bloomer";
+import "font-awesome-webpack";
 
 import { App } from "./components/app";
 import { Sidebar } from "./containers/sidebar";
 import { NotFound } from "./components/notfound";
 
-import './store'
+import "./store";
+
+import "./styles/index.scss";
 
 const rootElement: HTMLElement | null = document.getElementById("root");
 

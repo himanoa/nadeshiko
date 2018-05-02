@@ -52,7 +52,12 @@ module.exports = [
               loader: "sass-loader"
             }
           ]
-        }
+        },
+        {
+          test: /\.woff(2)?(\?v=\d+\.\d+\.\d+)?$/,
+          loader: "url-loader?limit=10000&mimetype=application/font-woff"
+        },
+        { test: /\.(ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader" }
       ]
     },
     devtool:
