@@ -64,12 +64,6 @@ module.exports = [
       }),
       new webpack.optimize.UglifyJsPlugin({
         sourceMap: process.env.NODE_ENV === "production" ? false : true
-      }),
-      new CleanWebpackPlugin(["public"]),
-      new HtmlWebpackPlugin({
-        hash: true,
-        template: "./src/index.template.ejs",
-        inject: "body"
       })
     ]
   }
