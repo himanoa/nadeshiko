@@ -27,7 +27,7 @@ if (Worker) {
 
 ReactDOM.render(
   <Router>
-    <Columns style={{ "margin-top": "20px", "margin-left": "20px" }}>
+    <Columns style={{ marginTop: "20px", marginLeft: "20px" }}>
       <Column isSize={2}>
         <Sidebar />
       </Column>
