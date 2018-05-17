@@ -13,7 +13,7 @@ export interface RssFeed {
 
 export const importFeed = async () => await axios.get(url);
 export const scheme = {
-  rssFeeds: "++id, name, &url, updateInterval, updatedAt"
+  rssFeeds: "++id, name, url, updateInterval, updatedAt"
 };
 export const fromYQLRssResponseToRssFeed = (rss: YQLRssResponse) => {};
 export default RssFeed;

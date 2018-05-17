@@ -1,12 +1,9 @@
 import * as React from "react";
 import { Menu, MenuLink, MenuLabel, MenuList, Icon } from "bloomer";
 import { Link } from "react-router-dom";
+import { RssFeed } from "../models/rssFeed";
 
-export interface SidebarProps {
-  visibleModal: () => void;
-}
-
-export const Sidebar = (props: SidebarProps) => (
+export const Sidebar = props => (
   <div>
     <Menu>
       <MenuLabel>Genaral</MenuLabel>
@@ -21,6 +18,11 @@ export const Sidebar = (props: SidebarProps) => (
           <Icon isSize="medium" isAlign="right" className="fa fa-plus" />
         </a>
       </MenuLabel>
+      <MenuList>
+        {props.feeds.map(feed => {
+          return <li key={feed.id}>{feed.name}</li>;
+        })}
+      </MenuList>
     </Menu>
   </div>
 );

@@ -2,6 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Container, Columns, Column } from "bloomer";
+import { Provider } from "react-redux";
 import "font-awesome-webpack";
 
 import { App } from "./components/app";
@@ -17,17 +18,19 @@ const rootElement: HTMLElement | null = document.getElementById("root");
 
 ReactDOM.render(
   <Router>
-    <Columns style={{ marginTop: "20px", marginLeft: "20px" }}>
-      <Column isSize={2}>
-        <Sidebar />
-      </Column>
-      <Column>
-        <Switch>
-          <Route exact path="/" component={App} />
-          <Route component={NotFound} />
-        </Switch>
-      </Column>
-    </Columns>
+    <Provider store={createStore()}>
+      <Columns style={{ marginTop: "20px", marginLeft: "20px" }}>
+        <Column isSize={2}>
+          <Sidebar />
+        </Column>
+        <Column>
+          <Switch>
+            <Route exact path="/" component={App} />
+            <Route component={NotFound} />
+          </Switch>
+        </Column>
+      </Columns>
+    </Provider>
   </Router>,
   rootElement
 );
