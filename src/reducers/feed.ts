@@ -11,23 +11,23 @@ export type PostFeedSuccessPayload = {
   feeds: RssFeed[];
 };
 
-export type PostFeedPayload = {
-  title: string;
-  feedUrl: string;
+export interface PostFeedPayload {
+  name: string;
+  url: string;
   updateInterval: number;
-};
+}
 
 export const actionCreators = {
   postFeed: (
-    title: string,
-    feedUrl: string,
+    name: string,
+    url: string,
     updateInterval: number
   ): Action<PostFeedPayload> => {
     return {
       type: POST_FEED,
       payload: {
-        title,
-        feedUrl,
+        name,
+        url,
         updateInterval
       }
     };

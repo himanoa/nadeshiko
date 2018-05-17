@@ -1,6 +1,6 @@
 import { Action, ErrorAction } from "./index";
-export const InitializeWorker = "worker/initializeWorker";
-export const StopWorker = "worker/stopWorker";
+export const INITIALIZE_WORKER = "worker/initializeWorker";
+export const STOP_WORKER = "worker/stopWorker";
 
 export type InitializeWorkerPayload = {
   id: number;
@@ -18,7 +18,7 @@ export const actionCreators = {
     url: string,
     updateInterval: number
   ): Action<InitializeWorkerPayload> => ({
-    type: InitializeWorker,
+    type: INITIALIZE_WORKER,
     payload: {
       id,
       url,
@@ -26,7 +26,7 @@ export const actionCreators = {
     }
   }),
   stopWorker: (id: number): Action<StopWorkerPayload> => ({
-    type: StopWorker,
+    type: STOP_WORKER,
     payload: { id }
   })
 };

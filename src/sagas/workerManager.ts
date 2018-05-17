@@ -2,9 +2,9 @@ import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
 
 import { Action, ErrorAction } from "../reducers";
 import {
-  InitializeWorker,
+  INITIALIZE_WORKER,
   InitializeWorkerPayload,
-  StopWorker,
+  STOP_WORKER,
   StopWorkerPayload
 } from "../reducers/worker";
 
@@ -30,7 +30,7 @@ export const stopWorkerSaga = function*(action) {
     workers[action.id] = undefined;
   } catch (e) {
     yield put<ErrorAction>({
-      type: StopWorker,
+      type: STOP_WORKER,
       payload: e,
       error: true
     });
@@ -42,7 +42,7 @@ export const initializeWorkerSaga = function*(action) {
     const feed = yield call(initializeWorker, action.payload);
   } catch (e) {
     yield put<ErrorAction>({
-      type: InitializeWorker,
+      type: INITIALIZE_WORKER,
       payload: e,
       error: true
     });
