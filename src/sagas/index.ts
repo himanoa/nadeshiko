@@ -1,8 +1,10 @@
 import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
 import { ADD_FEED } from "../reducers/feed";
-import { createRssFetcherSaga } from "./workerManager";
+import { InitializeWorker, StopWorker } from "../reducers/worker";
+import { initializeWorkerSaga, stopWorkerSaga } from "./workerManager";
 
 export const sagas = function*() {
   console.log("start");
-  yield takeEvery(ADD_FEED, createRssFetcherSaga);
+  yield takeEvery(InitializeWorker, initializeWorkerSaga);
+  yield takeEvery(StopWorker, stopWorkerSaga);
 };

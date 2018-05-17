@@ -1,32 +1,48 @@
 import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
 
+import { Action, ErrorAction } from "../reducers";
 import {
-  Action as createRssFetcherAction,
-  CREATE_RSS_FETCHER_ACTION
+  InitializeWorker,
+  InitializeWorkerPayload,
+  StopWorker,
+  StopWorkerPayload
 } from "../reducers/worker";
-import { ADD_FEED, AddFeedPayload } from "../reducers/feed";
 
 let workers = {};
 
-export const createRssFetcher = async (
-  payload: AddFeedPayload
+export const initializeWorker = async (
+  payload: InitializeWorkerPayload
 ): Promise<void> => {
   const worker = new Worker("rssWorker.bundle.js");
   worker.postMessage({
     payload: {
       type: "start",
-      urlHost: payload.feedUrl,
+      urlHost: payload.url,
       interval: payload.updateInterval
     }
   });
-  workers[payload.title] = worker;
+  workers[payload.id] = worker;
 };
-export const createRssFetcherSaga = function*(action) {
+
+export const stopWorkerSaga = function*(action) {
   try {
-    const feed = yield call(createRssFetcher, action.payload);
+    workers[action.id].terminate();
+    workers[action.id] = undefined;
   } catch (e) {
-    yield put<createRssFetcherAction>({
-      type: CREATE_RSS_FETCHER_ACTION,
+    yield put<ErrorAction>({
+      type: StopWorker,
+      payload: e,
+      error: true
+    });
+  }
+};
+
+export const initializeWorkerSaga = function*(action) {
+  try {
+    const feed = yield call(initializeWorker, action.payload);
+  } catch (e) {
+    yield put<ErrorAction>({
+      type: InitializeWorker,
       payload: e,
       error: true
     });
@@ -34,7 +50,6 @@ export const createRssFetcherSaga = function*(action) {
 }.bind(this);
 
 function* mySaga() {
-  yield takeEvery(ADD_FEED, createRssFetcherSaga);
+  yield takeEvery(InitializeWorker, initializeWorkerSaga);
+  yield takeEvery(StopWorker, stopWorkerSaga);
 }
-
-export default mySaga;
