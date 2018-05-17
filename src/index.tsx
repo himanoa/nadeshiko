@@ -8,7 +8,7 @@ import { App } from "./components/app";
 import { Sidebar } from "./containers/sidebar";
 import { NotFound } from "./components/notfound";
 
-import store from "./store";
+import createStore from "./createStore";
 import { actionCreators as feed } from "./reducers/feed";
 
 import "./styles/index.scss";
@@ -32,4 +32,6 @@ ReactDOM.render(
   rootElement
 );
 
-store.dispatch(feed.postFeed("himanoa", "https://blog.himanoa.net/rss", 2000));
+createStore().dispatch(
+  feed.postFeed("himanoa", "https://blog.himanoa.net/rss", 2000)
+);

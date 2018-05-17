@@ -18,7 +18,8 @@ export const initializeWorker = async (
     payload: {
       type: "start",
       urlHost: payload.url,
-      interval: payload.updateInterval
+      interval: payload.updateInterval,
+      id: payload.id
     }
   });
   workers[payload.id] = worker;

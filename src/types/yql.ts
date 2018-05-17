@@ -5,6 +5,6 @@ export type YQLRssResponse = {
   created: string;
   lang: string;
   results: {
-    item: RssArticle;
+    item: RssArticle[];
   };
 };
