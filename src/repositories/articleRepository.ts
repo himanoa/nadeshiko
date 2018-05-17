@@ -32,6 +32,11 @@ export class ArticleRepository {
       .equals(id)
       .count();
   }
+  async asyncWhereByRssFeedId(
+    id: number
+  ): Promise<Dexie.Collection<Article, number>> {
+    return await this.db.where("rssFeedId").equals(id);
+  }
   whereByRssFeedId(id: number): Dexie.Collection<Article, number> {
     return this.db.where("rssFeedId").equals(id);
   }

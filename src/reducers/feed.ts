@@ -1,9 +1,9 @@
 import { Action, ErrorAction } from "./index";
 import { RssFeed } from "../models/rssFeed";
 
-export const POST_FEED = "feed/postFeed";
-export const POST_FEED_SUCCESS = "feed/postFeedSuccess";
-export const POST_FEED_FAITAL = "feed/postFeedFaital";
+export const POST_FEED = "feed/post";
+export const POST_FEED_SUCCESS = "feed/postSuccess";
+export const POST_FEED_FAITAL = "feed/postFaital";
 
 export type FeedPayloadUnion = PostFeedPayload | PostFeedSuccessPayload;
 
