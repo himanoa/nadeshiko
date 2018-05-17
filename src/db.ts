@@ -20,7 +20,7 @@ export class NadeshikoDatabase extends Dexie {
   private constructor() {
     super("NadeshikoDatabase");
     this.version(1).stores({
-      ...articleScheme,
+      ...rssFeedScheme,
       ...articleScheme,
       ...bookmarkScheme,
       ...tagScheme

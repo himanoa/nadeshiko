@@ -8,22 +8,12 @@ import { App } from "./components/app";
 import { Sidebar } from "./containers/sidebar";
 import { NotFound } from "./components/notfound";
 
-import "./store";
+import store from "./store";
+import { actionCreators as feed } from "./reducers/feed";
 
 import "./styles/index.scss";
 
 const rootElement: HTMLElement | null = document.getElementById("root");
-
-if (Worker) {
-  const worker = new Worker("rssWorker.bundle.js");
-  worker.postMessage({
-    payload: { type: "start", urlHost: "https://google.com" }
-  });
-  const worker2 = new Worker("rssWorker.bundle.js");
-  worker2.postMessage({
-    payload: { type: "start", urlHost: "https://foobar.com" }
-  });
-}
 
 ReactDOM.render(
   <Router>
@@ -41,3 +31,5 @@ ReactDOM.render(
   </Router>,
   rootElement
 );
+
+store.dispatch(feed.postFeed("himanoa", "https://blog.himanoa.net/rss", 2000));

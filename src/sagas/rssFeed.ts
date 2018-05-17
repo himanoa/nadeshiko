@@ -1,3 +1,4 @@
+import { delay } from "redux-saga";
 import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
 import { RssFeedRepository } from "../repositories/rssFeedRepository";
 
@@ -13,10 +14,11 @@ import {
 } from "../reducers/feed";
 
 const rssFeedRepository = new RssFeedRepository();
+console.dir(rssFeedRepository.asyncAdd);
 
 export const postFeedSaga = function*(action: Action<PostFeedPayload>) {
   try {
-    const id = yield call(rssFeedRepository.db.add, action.payload);
+    const id = yield call(rssFeedRepository.asyncAdd, action.payload);
     yield put<Action<InitializeWorkerPayload>>({
       type: INITIALIZE_WORKER,
       payload: {
@@ -25,7 +27,7 @@ export const postFeedSaga = function*(action: Action<PostFeedPayload>) {
         updateInterval: action.payload.updateInterval
       }
     });
-    const feeds = yield call(rssFeedRepository.db.toArray);
+    const feeds = yield call(rssFeedRepository.toAsyncArray);
     yield put<Action<PostFeedSuccessPayload>>({
       type: POST_FEED_SUCCESS,
       payload: {
