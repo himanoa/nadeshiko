@@ -1,40 +1,61 @@
-export const ADD_FEED = "feed/addFeed";
+import { Action, ErrorAction } from "./index";
+import { RssFeed } from "../models/rssFeed";
 
-export type AddFeedPayload = {
+export const POST_FEED = "feed/postFeed";
+export const POST_FEED_SUCCESS = "feed/postFeedSuccess";
+export const POST_FEED_FAITAL = "feed/postFeedFaital";
+
+export type FeedPayloadUnion = PostFeedPayload | PostFeedSuccessPayload;
+
+export type PostFeedSuccessPayload = {
+  feeds: RssFeed[];
+};
+
+export type PostFeedPayload = {
   title: string;
   feedUrl: string;
   updateInterval: number;
 };
 
-export type Action = {
-  type: string;
-  payload: AddFeedPayload;
-};
-
 export const actionCreators = {
-  addFeed: (title: string, feedUrl: string, updateInterval: number): Action => {
+  postFeed: (
+    title: string,
+    feedUrl: string,
+    updateInterval: number
+  ): Action<PostFeedPayload> => {
     return {
-      type: ADD_FEED,
+      type: POST_FEED,
       payload: {
         title,
         feedUrl,
         updateInterval
       }
     };
+  },
+  postFeedSuccess: (feeds: RssFeed[]): Action<PostFeedSuccessPayload> => {
+    return {
+      type: POST_FEED_SUCCESS,
+      payload: {
+        feeds
+      }
+    };
   }
 };
 
 export type State = {
-  feeds: AddFeedPayload[];
+  feeds: RssFeed[];
 };
 
 export const initialState: State = { feeds: [] };
 
-export const reducer = (state: State = initialState, action: Action): State => {
+export const reducer = (
+  state: State = initialState,
+  action: Action<PostFeedSuccessPayload>
+): State => {
   switch (action.type) {
-    case ADD_FEED: {
+    case POST_FEED_SUCCESS: {
       return {
-        feeds: [...state.feeds, action.payload]
+        feeds: action.payload.feeds
       };
     }
     default: {

@@ -48,8 +48,3 @@ export const initializeWorkerSaga = function*(action) {
     });
   }
 }.bind(this);
-
-function* mySaga() {
-  yield takeEvery(InitializeWorker, initializeWorkerSaga);
-  yield takeEvery(StopWorker, stopWorkerSaga);
-}

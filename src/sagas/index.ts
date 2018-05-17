@@ -1,5 +1,5 @@
 import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
-import { ADD_FEED } from "../reducers/feed";
+import { POST_FEED } from "../reducers/feed";
 import { InitializeWorker, StopWorker } from "../reducers/worker";
 import { initializeWorkerSaga, stopWorkerSaga } from "./workerManager";
 
