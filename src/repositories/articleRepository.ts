@@ -17,6 +17,7 @@ export class ArticleRepository {
     return NadeshikoDatabase.instance.transaction("rw", this.db, async () => {
       const beforePutCount = await this.whereByRssFeedIdCount(feedId);
       await this.db.bulkPut(articles).catch(e => {
+        console.dir(e);
         if (e.name !== "BulkError") {
           Promise.reject(e);
         }

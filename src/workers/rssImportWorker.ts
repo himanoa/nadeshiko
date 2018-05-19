@@ -24,7 +24,7 @@ onmessage = function(e) {
       const articles = feed.results.item.map(article =>
         fromRssArticle(e.data.payload.id, article)
       );
-      console.dir(articles);
+      articleRepository.importFeed(e.data.payload.id, articles);
     }, e.data.payload.interval);
   }
 };
