@@ -4,6 +4,7 @@ import { RssFeed } from "../models/rssFeed";
 export const POST_FEED = "feed/post";
 export const POST_FEED_SUCCESS = "feed/postSuccess";
 export const POST_FEED_FAITAL = "feed/postFaital";
+export const INITIAL_FEED = "feed/initial";
 
 export type FeedPayloadUnion = PostFeedPayload | PostFeedSuccessPayload;
 
@@ -39,7 +40,8 @@ export const actionCreators = {
         feeds
       }
     };
-  }
+  },
+  initialFeed: () => ({ type: INITIAL_FEED, payload: {} })
 };
 
 export type State = {

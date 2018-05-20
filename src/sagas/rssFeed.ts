@@ -9,11 +9,40 @@ import {
   POST_FEED,
   POST_FEED_SUCCESS,
   POST_FEED_FAITAL,
+  INITIAL_FEED,
   PostFeedPayload,
   PostFeedSuccessPayload
 } from "../reducers/feed";
 
 const rssFeedRepository = new RssFeedRepository();
+
+export const initialFeedSaga = function*(action) {
+  try {
+    const feeds = yield call(rssFeedRepository.toAsyncArray);
+    yield put<Action<PostFeedSuccessPayload>>({
+      type: POST_FEED_SUCCESS,
+      payload: {
+        feeds
+      }
+    });
+    for (const feed of feeds) {
+      yield put<Action<InitializeWorkerPayload>>({
+        type: INITIALIZE_WORKER,
+        payload: {
+          id: feed.id,
+          url: feed.url,
+          updateInterval: feed.updateInterval
+        }
+      });
+    }
+  } catch (e) {
+    yield put<ErrorAction>({
+      type: POST_FEED_FAITAL,
+      payload: e,
+      error: true
+    });
+  }
+};
 
 export const postFeedSaga = function*(action: Action<PostFeedPayload>) {
   try {

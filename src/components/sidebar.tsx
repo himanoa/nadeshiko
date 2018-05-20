@@ -6,12 +6,6 @@ import { RssFeed } from "../models/rssFeed";
 export const Sidebar = props => (
   <div>
     <Menu>
-      <MenuLabel>Genaral</MenuLabel>
-      <MenuList>
-        <li>
-          <Link to="/sdasd">404</Link>
-        </li>
-      </MenuList>
       <MenuLabel>
         Feeds
         <a onClick={props.visibleModal}>

@@ -1,11 +1,15 @@
 import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
 
 import { Action, ErrorAction } from "../reducers";
+import { RssFeedRepository } from "../repositories/rssFeedRepository";
+
+const feedRepository = new RssFeedRepository();
 import {
   INITIALIZE_WORKER,
   InitializeWorkerPayload,
   STOP_WORKER,
-  StopWorkerPayload
+  StopWorkerPayload,
+  START_UP_APPLICATION
 } from "../reducers/worker";
 
 let workers = {};
@@ -13,7 +17,7 @@ let workers = {};
 export const initializeWorker = async (
   payload: InitializeWorkerPayload
 ): Promise<void> => {
-  const worker = new Worker("rssWorker.bundle.js");
+  const worker = new Worker("/rssWorker.bundle.js");
   worker.postMessage({
     payload: {
       type: "start",
@@ -25,6 +29,12 @@ export const initializeWorker = async (
   workers[payload.id] = worker;
 };
 
+export const startUpApplicationSaga = function*(action) {
+  const feeds = yield call(feedRepository.toAsyncArray);
+  feeds.forEach(feed => {
+    initializeWorker(feed);
+  });
+};
 export const stopWorkerSaga = function*(action) {
   try {
     workers[action.id].terminate();

@@ -27,6 +27,8 @@ history.listen(function(location, action) {
     createStore().dispatch(article.fetchArticles(parseInt(matched[1])));
   }
 });
+
+createStore().dispatch(feed.initialFeed());
 ReactDOM.render(
   <Router history={history}>
     <Provider store={createStore()}>
@@ -46,7 +48,3 @@ ReactDOM.render(
   </Router>,
   rootElement
 );
-
-// createStore().dispatch(
-//   feed.postFeed("himanoa", "https://blog.himanoa.net/rss", 2000)
-// );

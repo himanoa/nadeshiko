@@ -1,5 +1,6 @@
 import { Action, ErrorAction } from "./index";
 export const INITIALIZE_WORKER = "worker/initializeWorker";
+export const START_UP_APPLICATION = "worker/startUpApplication";
 export const STOP_WORKER = "worker/stopWorker";
 
 export type InitializeWorkerPayload = {
@@ -28,5 +29,9 @@ export const actionCreators = {
   stopWorker: (id: number): Action<StopWorkerPayload> => ({
     type: STOP_WORKER,
     payload: { id }
+  }),
+  startUpApplication: () => ({
+    type: START_UP_APPLICATION,
+    payload: {}
   })
 };
