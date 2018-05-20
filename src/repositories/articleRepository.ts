@@ -39,8 +39,9 @@ export class ArticleRepository {
     this.asyncWhereByRssFeedId = async (id: number): Promise<Article[]> => {
       return await this.db
         .where("rssFeedId")
-        .equals(3)
-        .toArray();
+        .equals(id)
+        .reverse()
+        .sortBy("pubdateSortAxis");
     };
   }
 }

@@ -6,14 +6,15 @@ export interface Article {
   rssFeedId: number;
   title: string;
   description: string;
-  pubdate?: string;
+  pubdate: string;
+  pubdateSortAxis: number;
   linkUrl: string;
   isAlreadyRead: boolean;
 }
 
 export const scheme = {
   articles:
-    "++id, rssFeedId, title, description,  pubdate, isAlreadyRead, &linkUrl"
+    "++id, rssFeedId, title, description,  pubdate, pubdateSortAxis, isAlreadyRead, &linkUrl"
 };
 
 export const fromRssArticle = (
@@ -27,7 +28,8 @@ export const fromRssArticle = (
     rssFeedId: feedId,
     title: article.title || "No Title",
     description: article.description || "No Description",
-    pubdate: article.pubDate || undefined,
+    pubdate: article.pubDate || "",
+    pubdateSortAxis: +Date.parse(article.pubDate || ""),
     linkUrl: article.link,
     isAlreadyRead: false
   };
