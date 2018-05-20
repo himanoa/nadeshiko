@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "build": "webpack -p",
+    "build": "NODE_ENV=production webpack -p",
     "start": "webpack-dev-server",
     "lint": "tslint",
     "fix": "prettier --write src/**.ts",

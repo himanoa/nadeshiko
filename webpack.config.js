@@ -60,8 +60,7 @@ module.exports = [
         { test: /\.(ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader" }
       ]
     },
-    devtool:
-      process.env.NODE_ENV === "production" ? "eval" : "inline-source-map",
+    devtool: process.env.NODE_ENV === "production" ? "" : "inline-source-map",
     plugins: [
       new webpack.DefinePlugin({
         "process.env.NODE_ENV": JSON.stringify("production"),
