@@ -11,7 +11,7 @@ export type FetchArticlesPayload = {
 };
 export type FetchArticlesSuccessPayload = {
   feedId: number;
-  feeds: RssFeed[];
+  articles: Article[];
 };
 
 export const actionCreators = {
@@ -25,13 +25,13 @@ export const actionCreators = {
   },
   fetchArticlesSuccess: (
     feedId: number,
-    feeds: RssFeed[]
+    articles: Article[]
   ): Action<FetchArticlesSuccessPayload> => {
     return {
       type: FETCH_ARTICLES_SUCCESS,
       payload: {
         feedId,
-        feeds
+        articles
       }
     };
   }
@@ -49,7 +49,7 @@ export const reducer = (
 ): State => {
   switch (action.type) {
     case FETCH_ARTICLES_SUCCESS: {
-      return { currentArticles: action.payload.feeds };
+      return { currentArticles: action.payload.articles };
     }
     default: {
       return state;

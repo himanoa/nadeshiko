@@ -3,14 +3,14 @@ import * as React from "react";
 import { Article } from "./article";
 import { Article as ArticleModel } from "../models/article";
 
-export const Articles = props => {
+export const Articles = props => (
   <ul>
-    {props.articles.map(article => {
+    {props.currentArticles.map(article => {
       return (
         <li key={article.id}>
           <Article {...article} />
         </li>
       );
     })}
-  </ul>;
-};
+  </ul>
+);

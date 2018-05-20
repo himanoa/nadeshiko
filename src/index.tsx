@@ -7,6 +7,7 @@ import "font-awesome-webpack";
 
 import { App } from "./components/app";
 import { Sidebar } from "./containers/sidebar";
+import { Articles } from "./containers/Articles";
 import { NotFound } from "./components/notfound";
 
 import createStore from "./createStore";
@@ -26,6 +27,7 @@ ReactDOM.render(
         <Column>
           <Switch>
             <Route exact path="/" component={App} />
+            <Route exact path="/feed/:id/articles" component={Articles} />
             <Route component={NotFound} />
           </Switch>
         </Column>

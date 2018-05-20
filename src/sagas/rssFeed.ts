@@ -14,7 +14,6 @@ import {
 } from "../reducers/feed";
 
 const rssFeedRepository = new RssFeedRepository();
-console.dir(rssFeedRepository.asyncAdd);
 
 export const postFeedSaga = function*(action: Action<PostFeedPayload>) {
   try {

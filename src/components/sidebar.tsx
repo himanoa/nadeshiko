@@ -20,7 +20,11 @@ export const Sidebar = props => (
       </MenuLabel>
       <MenuList>
         {props.feeds.map(feed => {
-          return <li key={feed.id}>{feed.name}</li>;
+          return (
+            <li key={feed.id}>
+              <Link to={`/feed/${feed.id}/articles`}>{feed.name}</Link>
+            </li>
+          );
         })}
       </MenuList>
     </Menu>

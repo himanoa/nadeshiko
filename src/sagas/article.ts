@@ -19,7 +19,7 @@ export const fetchArticlesSaga = function*(
   action: Action<FetchArticlesPayload>
 ) {
   try {
-    const feeds = yield call(
+    const articles = yield call(
       articleRepository.asyncWhereByRssFeedId,
       action.payload.feedId
     );
@@ -27,7 +27,7 @@ export const fetchArticlesSaga = function*(
       type: FETCH_ARTICLES_SUCCESS,
       payload: {
         feedId: action.payload.feedId,
-        feeds
+        articles
       }
     });
   } catch (e) {

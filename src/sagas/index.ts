@@ -7,7 +7,6 @@ import { postFeedSaga } from "./rssFeed";
 import { fetchArticlesSaga } from "./article";
 
 export const sagas = function*() {
-  console.log("start");
   yield all([
     takeEvery(INITIALIZE_WORKER, initializeWorkerSaga),
     takeEvery(STOP_WORKER, stopWorkerSaga),

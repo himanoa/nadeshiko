@@ -11,7 +11,6 @@ const rssFeedRepository = new RssFeedRepository();
 
 const q = url => `select * from rss where url in ('${url}')`;
 onmessage = function(e) {
-  console.dir(e);
   if (e.data.payload && e.data.payload.type === "start") {
     setInterval(async function() {
       const response = await axios.get(
@@ -19,7 +18,6 @@ onmessage = function(e) {
           e.data.payload.urlHost
         )}&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys`
       );
-      console.dir(response);
       const feed: YQLRssResponse = response.data.query;
       const articles = feed.results.item.map(article =>
         fromRssArticle(e.data.payload.id, article)
