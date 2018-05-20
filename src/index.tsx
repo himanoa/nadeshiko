@@ -47,6 +47,6 @@ ReactDOM.render(
   rootElement
 );
 
-createStore().dispatch(
-  feed.postFeed("himanoa", "https://blog.himanoa.net/rss", 2000)
-);
+// createStore().dispatch(
+//   feed.postFeed("himanoa", "https://blog.himanoa.net/rss", 2000)
+// );
