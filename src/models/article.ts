@@ -12,13 +12,18 @@ export const fromAtomArticle = (feedId: number, atom: AtomArticle): Article => {
     title: atom.title || "No Title",
     description:
       atom.content.summary || atom.content.content || "No Description",
-    pubdate: atom.published[0] || "",
-    pubdateSortAxis: +Date.parse(atom.published[0] || ""),
+    pubdate: getDate(atom.published),
+    pubdateSortAxis: +Date.parse(getDate(atom.published || atom.updated)),
     linkUrl: atom.link.href,
     isAlreadyRead: false
   };
 };
 
+const getDate = (date?: string | [string, string]): string => {
+  if (typeof date === "string") return date;
+  if (date instanceof Array) return date[0];
+  return "";
+};
 export const fromRssArticle = (feedId: number, rss: RssArticle): Article => {
   if (feedId == null) {
     throw new Error("Feed id is empty");

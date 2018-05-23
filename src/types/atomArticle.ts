@@ -2,8 +2,8 @@ import { Article } from "../models/article";
 
 export type AtomArticle = {
   id: string;
-  published: [string, string];
-  updated: [string, string];
+  published?: [string, string] | string;
+  updated?: [string, string] | string;
   link: {
     href: string;
     rel: string;
