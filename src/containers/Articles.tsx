@@ -21,7 +21,6 @@ const initializeComponent = () => {
 export const Articles = compose(
   withArticlesState,
   lifecycle({
-    componentDidMount: initializeComponent,
-    componentDidUpdate: initializeComponent
+    componentDidMount: initializeComponent
   })
 )(PArticles);

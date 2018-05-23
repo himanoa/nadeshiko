@@ -24,8 +24,16 @@ const columnStyle: React.CSSProperties = {
 };
 
 createStore().dispatch(feed.initialFeed());
+const history = createHistory();
+history.listen(function(location, action) {
+  const { pathname } = location;
+  const matched = pathname.match(/\/feed\/(\d+)\/articles/);
+  if (matched) {
+    createStore().dispatch(article.fetchArticles(parseInt(matched[1])));
+  }
+});
 ReactDOM.render(
-  <Router history={createHistory()}>
+  <Router history={history}>
     <Provider store={createStore()}>
       <Columns
         style={{
