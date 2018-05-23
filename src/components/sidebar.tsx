@@ -5,7 +5,6 @@ import { RssFeed } from "../models/rssFeed";
 
 const FeedLink = props => {
   let path = location.pathname.match(/\/feed\/(\d+)\/articles/);
-  console.dir(path);
   if (path && parseInt(path[1], 10) === props.feed.id) {
     return (
       <li key={props.feed.id}>
@@ -26,7 +25,7 @@ const FeedLink = props => {
 };
 
 export const Sidebar = props => (
-  <div>
+  <div style={{ overflowY: "auto" }}>
     <Menu>
       <MenuLabel>
         Feeds

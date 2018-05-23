@@ -18,6 +18,10 @@ import { actionCreators as article } from "./reducers/article";
 import "./styles/index.scss";
 
 const rootElement: HTMLElement | null = document.getElementById("root");
+const columnStyle: React.CSSProperties = {
+  marginTop: "20px",
+  overflowY: "scroll"
+};
 
 const history = createHistory();
 history.listen(function(location, action) {
@@ -32,11 +36,20 @@ createStore().dispatch(feed.initialFeed());
 ReactDOM.render(
   <Router history={history}>
     <Provider store={createStore()}>
-      <Columns style={{ marginTop: "20px", marginLeft: "20px" }}>
-        <Column isSize={2}>
+      <Columns
+        style={{
+          height: "100vh",
+          width: "100%",
+          overflow: "hidden"
+        }}
+      >
+        <Column isSize={2} style={columnStyle}>
           <Sidebar />
         </Column>
-        <Column>
+        <Column
+          isSize={10}
+          style={{ ...columnStyle, ...{ marginLeft: "2rem" } }}
+        >
           <Switch>
             <Route exact path="/" component={App} />
             <Route exact path="/feed/:id/articles" component={Articles} />

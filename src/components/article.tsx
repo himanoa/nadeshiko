@@ -1,27 +1,24 @@
 import * as React from "react";
 import { Box, Content } from "bloomer";
+import styled from "styled-components";
 
-// export const Article = props => (
-//   <Box>
-//     <Content>
-//       <a href={props.linkUrl} target="_blank">
-//         <h1>{props.title}</h1>
-//       </a>
-//       <small>{props.pubdate}</small>
-//       <p>{props.description}</p>
-//     </Content>
-//   </Box>
-// );
+const P = styled.p`
+  word-break: break-all;
+`;
+
+const Headline = styled.h1`
+  word-break: break-all;
+`;
 
 export const Article = props => {
   return (
     <Box>
       <Content>
         <a href={props.linkUrl} target="_blank">
-          <h1>{props.title}</h1>
+          <Headline>{props.title}</Headline>
         </a>
         <small>{props.pubdate}</small>
-        <p>{props.description}</p>
+        <P>{props.description}</P>
       </Content>
     </Box>
   );
