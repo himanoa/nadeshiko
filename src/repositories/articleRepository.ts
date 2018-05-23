@@ -1,7 +1,7 @@
 import Dexie from "dexie";
 
 import { NadeshikoDatabase } from "../db";
-import Article from "../models/article";
+import { Article } from "../models/article";
 
 export class ArticleRepository {
   private _db: Dexie.Table<Article, number>;
