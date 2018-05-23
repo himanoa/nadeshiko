@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { RssFeed } from "../models/rssFeed";
 
 const FeedLink = props => {
-  let path = location.pathname.match(/\/feed\/(\d+)\/articles/);
+  let path = window.location.pathname.match(/\/feed\/(\d+)\/articles/);
   if (path && parseInt(path[1], 10) === props.feed.id) {
     return (
       <li key={props.feed.id}>

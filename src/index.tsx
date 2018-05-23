@@ -10,8 +10,8 @@ import { App } from "./components/app";
 import { Sidebar } from "./containers/sidebar";
 import { Articles } from "./containers/Articles";
 import { NotFound } from "./components/notfound";
-
 import createStore from "./createStore";
+
 import { actionCreators as feed } from "./reducers/feed";
 import { actionCreators as article } from "./reducers/article";
 
@@ -23,18 +23,9 @@ const columnStyle: React.CSSProperties = {
   overflowY: "scroll"
 };
 
-const history = createHistory();
-history.listen(function(location, action) {
-  const { pathname } = location;
-  const matched = pathname.match(/\/feed\/(\d+)\/articles/);
-  if (matched) {
-    createStore().dispatch(article.fetchArticles(parseInt(matched[1])));
-  }
-});
-
 createStore().dispatch(feed.initialFeed());
 ReactDOM.render(
-  <Router history={history}>
+  <Router history={createHistory()}>
     <Provider store={createStore()}>
       <Columns
         style={{
