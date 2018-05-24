@@ -50,8 +50,8 @@ ReactDOM.render(
           style={{ ...columnStyle, ...{ marginLeft: "2rem" } }}
         >
           <Switch>
-            <Route exact path="/" component={App} />
-            <Route exact path="/feed/:id/articles" component={Articles} />
+            <Route exact={true} path="/" component={App} />
+            <Route exact={true} path="/feed/:id/articles" component={Articles} />
             <Route component={NotFound} />
           </Switch>
         </Column>

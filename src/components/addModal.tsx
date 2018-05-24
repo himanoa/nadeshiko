@@ -49,11 +49,12 @@ class _AddModal extends React.Component<Props & any, State & FeedState> {
   }
 
   handleInput(event) {
-    if (Object.keys(this.state).includes(event.target.name))
+    if (Object.keys(this.state).includes(event.target.name)) {
       this.setState({
         ...this.state,
         ...{ [event.target.name]: event.target.value }
       });
+    }
   }
 
   addFeed() {
@@ -101,7 +102,7 @@ class _AddModal extends React.Component<Props & any, State & FeedState> {
             </Field>
           </ModalCardBody>
           <ModalCardFooter>
-            <Field isGrouped>
+            <Field isGrouped={true}>
               <Control>
                 <Button isColor="primary" onClick={this.addFeed}>
                   Submit

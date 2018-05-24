@@ -11,6 +11,7 @@
     "start": "webpack-dev-server",
     "lint": "tslint",
     "fix": "prettier --write src/**.ts",
+    "tslint-fix": "tslint --fix src/**/*.{ts,tsx}",
     "test": "jest --coverage"
   },
   "devDependencies": {

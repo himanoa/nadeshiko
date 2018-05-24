@@ -1,4 +1,4 @@
-import {  withState } from "recompose";
+import { withState } from "recompose";
 
 export const withAddFeedModalState = withState(
   `isVisibleAddFeedModalDialog`,

@@ -37,7 +37,7 @@ export class ArticleRepository {
         .count();
     };
     this.asyncWhereByRssFeedId = async (id: number): Promise<Article[]> => {
-      return await this.db
+      return this.db
         .where("rssFeedId")
         .equals(id)
         .reverse()

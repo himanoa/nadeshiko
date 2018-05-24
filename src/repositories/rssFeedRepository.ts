@@ -13,9 +13,9 @@ export class RssFeedRepository {
   constructor(db = NadeshikoDatabase.instance) {
     this._table = db.rssFeeds;
     this.asyncAdd = async (rssFeed: RssFeed) => {
-      return await this.table.add(rssFeed);
+      return this.table.add(rssFeed);
     };
-    this.toAsyncArray = async () => await this.table.toArray();
+    this.toAsyncArray = async () => this.table.toArray();
   }
 }
 export default RssFeedRepository;
