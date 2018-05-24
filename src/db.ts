@@ -12,7 +12,7 @@ export class NadeshikoDatabase extends Dexie {
   public tags: Dexie.Table<Tag, number>;
 
   public static get instance(): NadeshikoDatabase {
-    if (instance) {
+    if (!instance) {
       instance = new NadeshikoDatabase();
     }
     return instance;
