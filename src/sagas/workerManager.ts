@@ -4,11 +4,7 @@ import { ErrorAction } from "../reducers";
 import { RssFeedRepository } from "../repositories/rssFeedRepository";
 
 const feedRepository = new RssFeedRepository();
-import {
-  INITIALIZE_WORKER,
-  InitializeWorkerPayload,
-  STOP_WORKER
-} from "../reducers/worker";
+import { InitializeWorkerPayload, STOP_WORKER } from "../reducers/worker";
 
 let workers = {};
 
@@ -45,15 +41,3 @@ export const stopWorkerSaga = function*(action) {
     });
   }
 };
-
-export const initializeWorkerSaga = function*(action) {
-  try {
-    const feed = yield call(initializeWorker, action.payload);
-  } catch (e) {
-    yield put<ErrorAction>({
-      type: INITIALIZE_WORKER,
-      payload: e,
-      error: true
-    });
-  }
-}.bind(this);

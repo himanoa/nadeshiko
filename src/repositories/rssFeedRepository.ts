@@ -7,7 +7,6 @@ export class RssFeedRepository {
   public toAsyncArray: () => Promise<RssFeed[]>;
 
   private _table: Dexie.Table<RssFeed, number>;
-  private tableName: string = "rssFeeds";
   get table(): Dexie.Table<RssFeed, number> {
     return this._table;
   }

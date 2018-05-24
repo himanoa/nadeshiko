@@ -2,12 +2,8 @@ import axios from "axios";
 import { YQLRssResponse } from "../types/yql";
 import { generateArticles } from "../models/article";
 import { ArticleRepository } from "../repositories/articleRepository";
-import { RssFeedRepository } from "../repositories/rssFeedRepository";
-
-let timer;
 
 const articleRepository = new ArticleRepository();
-const rssFeedRepository = new RssFeedRepository();
 
 const q = url => `select * from feed where url in ('${url}')`;
 const fetchRSS = async function(e) {
