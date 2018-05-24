@@ -24,10 +24,20 @@ export const initializeWorker = async (
 };
 
 export const startUpApplicationSaga = function*(action) {
-  const feeds = yield call(feedRepository.toAsyncArray);
-  feeds.forEach(feed => {
-    initializeWorker(feed);
-  });
+  try {
+    const feeds = yield call(feedRepository.toAsyncArray);
+    for (const feed of feeds) {
+      initializeWorker(feed).catch(err => {
+        throw err;
+      });
+    }
+  } catch (e) {
+    yield put<ErrorAction>({
+      type: STOP_WORKER,
+      payload: e,
+      error: true
+    });
+  }
 };
 export const stopWorkerSaga = function*(action) {
   try {

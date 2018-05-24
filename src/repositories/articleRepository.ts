@@ -21,7 +21,7 @@ export class ArticleRepository {
         const beforePutCount = await this.whereByRssFeedIdCount(feedId);
         await this.db.bulkPut(articles).catch(e => {
           if (e.name !== "BulkError") {
-            Promise.reject(e);
+            console.error(e.name);
           }
         });
         const afterPutCount = await this.whereByRssFeedIdCount(feedId);
