@@ -51,7 +51,11 @@ ReactDOM.render(
         >
           <Switch>
             <Route exact={true} path="/" component={App} />
-            <Route exact={true} path="/feed/:id/articles" component={Articles} />
+            <Route
+              exact={true}
+              path="/feed/:id/articles"
+              component={Articles}
+            />
             <Route component={NotFound} />
           </Switch>
         </Column>

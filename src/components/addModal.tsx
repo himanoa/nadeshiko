@@ -32,7 +32,10 @@ export interface Props {
   close: () => void;
 }
 
-class _AddModal extends React.Component<Props & any, State & FeedState> {
+class AddModalComponent extends React.Component<
+  Props & any,
+  State & FeedState
+> {
   state: State & FeedState;
   props: Props & any;
   constructor(props: Props & any) {
@@ -118,4 +121,4 @@ class _AddModal extends React.Component<Props & any, State & FeedState> {
     );
   }
 }
-export const AddModal = withFeedState(_AddModal);
+export const AddModal = withFeedState(AddModalComponent);

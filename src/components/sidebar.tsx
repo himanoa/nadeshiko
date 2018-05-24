@@ -33,7 +33,9 @@ export const Sidebar = props => (
           <Icon isSize="medium" isAlign="right" className="fa fa-plus" />
         </a>
       </MenuLabel>
-      <MenuList>{props.feeds.map(feed => <FeedLink feed={feed} />)}</MenuList>
+      <MenuList>
+        {props.feeds.map(feed => <FeedLink feed={feed} key={feed.id} />)}
+      </MenuList>
     </Menu>
   </div>
 );

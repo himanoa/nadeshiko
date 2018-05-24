@@ -14,7 +14,7 @@ const initializeComponent = () => {
   const { pathname } = window.location;
   const matched = pathname.match(/\/feed\/(\d+)\/articles/);
   if (matched) {
-    createStore().dispatch(article.fetchArticles(parseInt(matched[1])));
+    createStore().dispatch(article.fetchArticles(parseInt(matched[1], 10)));
   }
 };
 
