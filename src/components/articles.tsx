@@ -1,7 +1,6 @@
 import * as React from "react";
 
 import { Article } from "./article";
-import { Article as ArticleModel } from "../models/article";
 
 const unorderedList = { height: "100vh" };
 const getArticle = (article): JSX.Element => {

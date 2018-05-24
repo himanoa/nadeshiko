@@ -1,4 +1,4 @@
-import { Action, ErrorAction } from "./index";
+import { Action } from "./index";
 export const INITIALIZE_WORKER = "worker/initializeWorker";
 export const START_UP_APPLICATION = "worker/startUpApplication";
 export const STOP_WORKER = "worker/stopWorker";

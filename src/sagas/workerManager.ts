@@ -1,15 +1,13 @@
-import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
+import { call, put } from "redux-saga/effects";
 
-import { Action, ErrorAction } from "../reducers";
+import { ErrorAction } from "../reducers";
 import { RssFeedRepository } from "../repositories/rssFeedRepository";
 
 const feedRepository = new RssFeedRepository();
 import {
   INITIALIZE_WORKER,
   InitializeWorkerPayload,
-  STOP_WORKER,
-  StopWorkerPayload,
-  START_UP_APPLICATION
+  STOP_WORKER
 } from "../reducers/worker";
 
 let workers = {};

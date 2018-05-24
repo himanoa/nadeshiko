@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Router, Route, Switch } from "react-router-dom";
-import { Container, Columns, Column } from "bloomer";
+import { Columns, Column } from "bloomer";
 import { Provider } from "react-redux";
 import createHistory from "history/createBrowserHistory";
 import "font-awesome-webpack";
@@ -29,19 +29,18 @@ history.listen(function(location, action) {
   const { pathname } = location;
   const matched = pathname.match(/\/feed\/(\d+)\/articles/);
   if (matched) {
-    createStore().dispatch(article.fetchArticles(parseInt(matched[1])));
+    createStore().dispatch(article.fetchArticles(parseInt(matched[1], 10)));
   }
 });
+const columnsStyle = {
+  height: "100vh",
+  width: "100%",
+  overflow: "hidden"
+};
 ReactDOM.render(
   <Router history={history}>
     <Provider store={createStore()}>
-      <Columns
-        style={{
-          height: "100vh",
-          width: "100%",
-          overflow: "hidden"
-        }}
-      >
+      <Columns style={columnsStyle}>
         <Column isSize={2} style={columnStyle}>
           <Sidebar />
         </Column>

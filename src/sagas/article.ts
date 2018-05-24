@@ -1,16 +1,13 @@
-import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
+import { call, put } from "redux-saga/effects";
 
 import { ArticleRepository } from "../repositories/articleRepository";
-import { Article } from "../models/article";
 import { Action, ErrorAction } from "../reducers";
 
 import {
   FETCH_ARTICLES_SUCCESS,
   FETCH_ARTICLES_FAITAL,
-  FETCH_ARTICLES,
   FetchArticlesPayload,
-  FetchArticlesSuccessPayload,
-  actionCreators
+  FetchArticlesSuccessPayload
 } from "../reducers/article";
 
 const articleRepository = new ArticleRepository();

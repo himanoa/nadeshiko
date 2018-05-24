@@ -1,4 +1,4 @@
-import { takeEvery, takeLatest, all } from "redux-saga/effects";
+import { takeEvery, all } from "redux-saga/effects";
 import { POST_FEED, INITIAL_FEED } from "../reducers/feed";
 import { FETCH_ARTICLES } from "../reducers/article";
 import { INITIALIZE_WORKER, STOP_WORKER } from "../reducers/worker";

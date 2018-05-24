@@ -1,5 +1,3 @@
-import { Article } from "../models/article";
-
 export type AtomArticle = {
   id: string;
   published?: [string, string] | string;

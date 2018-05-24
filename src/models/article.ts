@@ -1,12 +1,14 @@
 import { RssArticle } from "../types/rssArticle";
 import { AtomArticle } from "../types/atomArticle";
-import { RssFeed } from "./rssFeed";
 import { YQLResult } from "../types/yql";
 
+const getDate = (date?: string | [string, string]): string => {
+  if (typeof date === "string") return date;
+  if (date instanceof Array) return date[0];
+  return "";
+};
+
 export const fromAtomArticle = (feedId: number, atom: AtomArticle): Article => {
-  if (feedId == null) {
-    throw new Error("Feed id is empty");
-  }
   return {
     rssFeedId: feedId,
     title: atom.title || "No Title",
@@ -19,15 +21,7 @@ export const fromAtomArticle = (feedId: number, atom: AtomArticle): Article => {
   };
 };
 
-const getDate = (date?: string | [string, string]): string => {
-  if (typeof date === "string") return date;
-  if (date instanceof Array) return date[0];
-  return "";
-};
 export const fromRssArticle = (feedId: number, rss: RssArticle): Article => {
-  if (feedId == null) {
-    throw new Error("Feed id is empty");
-  }
   return {
     rssFeedId: feedId,
     title: rss.title || "No Title",
