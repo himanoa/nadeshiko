@@ -42,6 +42,7 @@ export const initialFeedSaga = function*(action) {
 
 export const postFeedSaga = function*(action: Action<PostFeedPayload>) {
   try {
+    console.dir("poe");
     const id = yield call(rssFeedRepository.asyncAdd, action.payload);
     yield put<Action<InitializeWorkerPayload>>({
       type: INITIALIZE_WORKER,
