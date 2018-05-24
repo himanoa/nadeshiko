@@ -11,7 +11,7 @@ const getDate = (date?: string | [string, string]): string => {
 export const fromAtomArticle = (feedId: number, atom: AtomArticle): Article => {
   return {
     rssFeedId: feedId,
-    title: atom.title || "No Title",
+    title: atom.title.content || "No Title",
     description:
       atom.content.summary || atom.content.content || "No Description",
     pubdate: getDate(atom.published),
