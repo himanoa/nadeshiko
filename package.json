@@ -12,7 +12,15 @@
     "lint": "tslint",
     "fix": "prettier --write src/**.ts",
     "tslint-fix": "tslint --fix src/**/*.{ts,tsx}",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write src/**.{ts,tsx}",
+      "tslint --fix src/**.{ts,tsx} --project tsconfig.json",
+      "git add"
+    ]
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
