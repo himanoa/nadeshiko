@@ -2,11 +2,6 @@
   "rulesDirectory": ["tslint-plugin-prettier", "tslint-react"],
   "extends": ["tslint-config-standard", "tslint-config-prettier", "tslint-react"],
   "rules": {
-    "react": [
-      true, {
-        "jsx-no-multiline-js": true
-      }
-    ],
     "prettier": [
       true, {
         "semi": true
