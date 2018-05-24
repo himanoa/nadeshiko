@@ -1,5 +1,4 @@
 import * as React from "react";
-import { pure, StateHandler } from "recompose";
 
 import { withFeedState } from "../hocs/withFeedState";
 import { State as FeedState } from "../reducers/feed";
@@ -17,7 +16,6 @@ import {
   ModalCardFooter,
   ModalCardTitle,
   ModalBackground,
-  ModalClose,
   Delete
 } from "bloomer";
 
