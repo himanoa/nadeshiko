@@ -4,11 +4,11 @@ import { NadeshikoDatabase } from "../db";
 import { Article } from "../models/article";
 
 export class ArticleRepository {
-  private db: Dexie.Table<Article, number> = NadeshikoDatabase.instance
-    .articles;
   public importFeed: (feedId: number, articles: Article[]) => Promise<boolean>;
   public whereByRssFeedIdCount: (feedId: number) => Promise<number>;
   public asyncWhereByRssFeedId: (feedId: number) => Promise<Article[]>;
+  private db: Dexie.Table<Article, number> = NadeshikoDatabase.instance
+    .articles;
   constructor() {
     this.importFeed = async (
       feedId: number,
