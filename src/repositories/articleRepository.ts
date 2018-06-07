@@ -4,15 +4,11 @@ import { NadeshikoDatabase } from "../db";
 import { Article } from "../models/article";
 
 export class ArticleRepository {
-  private _db: Dexie.Table<Article, number> = NadeshikoDatabase.instance
+  private db: Dexie.Table<Article, number> = NadeshikoDatabase.instance
     .articles;
-  private tableName: string = "articles";
   public importFeed: (feedId: number, articles: Article[]) => Promise<boolean>;
   public whereByRssFeedIdCount: (feedId: number) => Promise<number>;
   public asyncWhereByRssFeedId: (feedId: number) => Promise<Article[]>;
-  get db(): Dexie.Table<Article, number> {
-    return this._db;
-  }
   constructor() {
     this.importFeed = async (
       feedId: number,
@@ -22,7 +18,7 @@ export class ArticleRepository {
         const beforePutCount = await this.whereByRssFeedIdCount(feedId);
         await this.db.bulkPut(articles).catch(e => {
           if (e.name !== "BulkError") {
-            Promise.reject(e);
+            console.error(e.name);
           }
         });
         const afterPutCount = await this.whereByRssFeedIdCount(feedId);

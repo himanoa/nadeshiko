@@ -1,5 +1,3 @@
-import { Article } from "../models/article";
-
 export type AtomArticle = {
   id: string;
   published?: [string, string] | string;
@@ -9,8 +7,10 @@ export type AtomArticle = {
     rel: string;
     type: string;
   };
-  url: string;
-  title: string;
+  title: {
+    type?: string;
+    content?: string;
+  };
   content: {
     type: string;
     content?: string;

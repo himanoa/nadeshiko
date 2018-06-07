@@ -1,4 +1,4 @@
-import { Action, ErrorAction } from "./index";
+import { Action } from "./index";
 import { RssFeed } from "../models/rssFeed";
 
 export const POST_FEED = "feed/post";

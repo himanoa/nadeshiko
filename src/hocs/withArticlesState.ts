@@ -2,8 +2,8 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 import { RootState } from "../reducers";
-import { actionCreators, reducer } from "../reducers/article";
-import { compose, withProps } from "recompose";
+import { actionCreators } from "../reducers/article";
+import { compose } from "recompose";
 
 export const withArticlesState = compose(
   connect(

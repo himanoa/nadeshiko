@@ -4,7 +4,6 @@ import Bookmark from "../models/bookmark";
 
 export class BookmarkRepository {
   private _db: Dexie.Table<Bookmark, number>;
-  private tableName: string = "bookmarks";
   get db(): Dexie.Table<Bookmark, number> {
     return this.db;
   }

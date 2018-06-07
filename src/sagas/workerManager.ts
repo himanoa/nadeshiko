@@ -1,15 +1,13 @@
-import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
+import { call, put } from "redux-saga/effects";
 
-import { Action, ErrorAction } from "../reducers";
+import { ErrorAction } from "../reducers";
 import { RssFeedRepository } from "../repositories/rssFeedRepository";
 
 const feedRepository = new RssFeedRepository();
 import {
-  INITIALIZE_WORKER,
   InitializeWorkerPayload,
   STOP_WORKER,
-  StopWorkerPayload,
-  START_UP_APPLICATION
+  INITIALIZE_WORKER
 } from "../reducers/worker";
 
 let workers = {};
@@ -17,6 +15,7 @@ let workers = {};
 export const initializeWorker = async (
   payload: InitializeWorkerPayload
 ): Promise<void> => {
+  console.dir("poe");
   const worker = new Worker("/rssWorker.bundle.js");
   worker.postMessage({
     payload: {
@@ -30,10 +29,20 @@ export const initializeWorker = async (
 };
 
 export const startUpApplicationSaga = function*(action) {
-  const feeds = yield call(feedRepository.toAsyncArray);
-  feeds.forEach(feed => {
-    initializeWorker(feed);
-  });
+  try {
+    const feeds = yield call(feedRepository.toAsyncArray);
+    for (const feed of feeds) {
+      initializeWorker(feed).catch(err => {
+        throw err;
+      });
+    }
+  } catch (e) {
+    yield put<ErrorAction>({
+      type: STOP_WORKER,
+      payload: e,
+      error: true
+    });
+  }
 };
 export const stopWorkerSaga = function*(action) {
   try {
@@ -47,10 +56,9 @@ export const stopWorkerSaga = function*(action) {
     });
   }
 };
-
 export const initializeWorkerSaga = function*(action) {
   try {
-    const feed = yield call(initializeWorker, action.payload);
+    yield call(initializeWorker, action.payload);
   } catch (e) {
     yield put<ErrorAction>({
       type: INITIALIZE_WORKER,

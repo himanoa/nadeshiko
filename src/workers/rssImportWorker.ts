@@ -2,12 +2,8 @@ import axios from "axios";
 import { YQLRssResponse } from "../types/yql";
 import { generateArticles } from "../models/article";
 import { ArticleRepository } from "../repositories/articleRepository";
-import { RssFeedRepository } from "../repositories/rssFeedRepository";
-
-let timer;
 
 const articleRepository = new ArticleRepository();
-const rssFeedRepository = new RssFeedRepository();
 
 const q = url => `select * from feed where url in ('${url}')`;
 const fetchRSS = async function(e) {
@@ -17,14 +13,20 @@ const fetchRSS = async function(e) {
     )}&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys`
   );
   const feed: YQLRssResponse = response.data.query;
-  articleRepository.importFeed(
-    e.data.payload.id,
-    generateArticles(feed.results, e.data.payload.id)
-  );
+  articleRepository
+    .importFeed(
+      e.data.payload.id,
+      generateArticles(feed.results, e.data.payload.id)
+    )
+    .catch(err => {
+      throw err;
+    });
 };
 onmessage = function(e) {
   if (e.data.payload && e.data.payload.type === "start") {
-    fetchRSS(e);
+    fetchRSS(e).catch(err => {
+      throw err;
+    });
     setInterval(fetchRSS.bind(this, e), e.data.payload.interval);
   }
 };

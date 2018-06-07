@@ -1,5 +1,4 @@
-import { Action, ErrorAction } from "./index";
-import { RssFeed } from "../models/rssFeed";
+import { Action } from "./index";
 import { Article } from "../models/article";
 
 export const FETCH_ARTICLES = "article/fetch";

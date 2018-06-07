@@ -1,5 +1,4 @@
 import * as React from "react";
-import { pure, StateHandler } from "recompose";
 
 import { withFeedState } from "../hocs/withFeedState";
 import { State as FeedState } from "../reducers/feed";
@@ -17,7 +16,6 @@ import {
   ModalCardFooter,
   ModalCardTitle,
   ModalBackground,
-  ModalClose,
   Delete
 } from "bloomer";
 
@@ -32,7 +30,10 @@ export interface Props {
   close: () => void;
 }
 
-class _AddModal extends React.Component<Props & any, State & FeedState> {
+class AddModalComponent extends React.Component<
+  Props & any,
+  State & FeedState
+> {
   state: State & FeedState;
   props: Props & any;
   constructor(props: Props & any) {
@@ -49,11 +50,12 @@ class _AddModal extends React.Component<Props & any, State & FeedState> {
   }
 
   handleInput(event) {
-    if (Object.keys(this.state).includes(event.target.name))
+    if (Object.keys(this.state).includes(event.target.name)) {
       this.setState({
         ...this.state,
         ...{ [event.target.name]: event.target.value }
       });
+    }
   }
 
   addFeed() {
@@ -101,7 +103,7 @@ class _AddModal extends React.Component<Props & any, State & FeedState> {
             </Field>
           </ModalCardBody>
           <ModalCardFooter>
-            <Field isGrouped>
+            <Field isGrouped={true}>
               <Control>
                 <Button isColor="primary" onClick={this.addFeed}>
                   Submit
@@ -117,4 +119,4 @@ class _AddModal extends React.Component<Props & any, State & FeedState> {
     );
   }
 }
-export const AddModal = withFeedState(_AddModal);
+export const AddModal = withFeedState(AddModalComponent);

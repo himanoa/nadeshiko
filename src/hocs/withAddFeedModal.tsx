@@ -13,17 +13,16 @@ export const withAddFeedModal = InnerComponent =>
     constructor(props: Props) {
       super(props);
     }
+    updateVisible(visible: Boolean): void {
+      this.setState({ visible } as State);
+    }
     render(): JSX.Element {
       return (
         <div>
-          <InnerComponent
-            visibleModal={() => {
-              this.setState({ visible: true } as State);
-            }}
-          />
+          <InnerComponent visibleModal={this.updateVisible.bind(this, true)} />
           <AddModal
             visible={this.state.visible}
-            close={() => this.setState({ visible: false })}
+            close={this.updateVisible.bind(this, false)}
           />
         </div>
       );

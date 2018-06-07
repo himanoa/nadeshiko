@@ -1,5 +1,3 @@
-import * as db from "../db";
-
 export interface Bookmark {
   id?: number;
   articleId: number;

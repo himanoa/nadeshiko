@@ -1,7 +1,6 @@
 import * as React from "react";
-import { Menu, MenuLink, MenuLabel, MenuList, Icon } from "bloomer";
+import { Menu, MenuLabel, MenuList, Icon } from "bloomer";
 import { Link } from "react-router-dom";
-import { RssFeed } from "../models/rssFeed";
 
 const FeedLink = props => {
   let path = window.location.pathname.match(/\/feed\/(\d+)\/articles/);
@@ -33,7 +32,9 @@ export const Sidebar = props => (
           <Icon isSize="medium" isAlign="right" className="fa fa-plus" />
         </a>
       </MenuLabel>
-      <MenuList>{props.feeds.map(feed => <FeedLink feed={feed} />)}</MenuList>
+      <MenuList>
+        {props.feeds.map(feed => <FeedLink feed={feed} key={feed.id} />)}
+      </MenuList>
     </Menu>
   </div>
 );

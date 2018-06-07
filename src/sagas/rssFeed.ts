@@ -1,15 +1,11 @@
-import { delay } from "redux-saga";
-import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
+import { call, put } from "redux-saga/effects";
 import { RssFeedRepository } from "../repositories/rssFeedRepository";
 
-import { RssFeed } from "../models/rssFeed";
 import { Action, ErrorAction } from "../reducers";
 import { INITIALIZE_WORKER, InitializeWorkerPayload } from "../reducers/worker";
 import {
-  POST_FEED,
   POST_FEED_SUCCESS,
   POST_FEED_FAITAL,
-  INITIAL_FEED,
   PostFeedPayload,
   PostFeedSuccessPayload
 } from "../reducers/feed";
@@ -46,6 +42,7 @@ export const initialFeedSaga = function*(action) {
 
 export const postFeedSaga = function*(action: Action<PostFeedPayload>) {
   try {
+    console.dir("poe");
     const id = yield call(rssFeedRepository.asyncAdd, action.payload);
     yield put<Action<InitializeWorkerPayload>>({
       type: INITIALIZE_WORKER,
