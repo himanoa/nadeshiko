@@ -4,7 +4,8 @@ import { NadeshikoDatabase } from "../db";
 import { Article } from "../models/article";
 
 export class ArticleRepository {
-  private _db: Dexie.Table<Article, number>;
+  private _db: Dexie.Table<Article, number> = NadeshikoDatabase.instance
+    .articles;
   private tableName: string = "articles";
   public importFeed: (feedId: number, articles: Article[]) => Promise<boolean>;
   public whereByRssFeedIdCount: (feedId: number) => Promise<number>;
@@ -13,7 +14,6 @@ export class ArticleRepository {
     return this._db;
   }
   constructor() {
-    this._db = NadeshikoDatabase.instance.articles;
     this.importFeed = async (
       feedId: number,
       articles: Article[]
@@ -37,7 +37,7 @@ export class ArticleRepository {
         .count();
     };
     this.asyncWhereByRssFeedId = async (id: number): Promise<Article[]> => {
-      return await this.db
+      return this.db
         .where("rssFeedId")
         .equals(id)
         .reverse()
