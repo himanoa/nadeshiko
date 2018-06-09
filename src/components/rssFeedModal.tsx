@@ -120,4 +120,4 @@ class RssFeedModalComponent extends React.Component<
     );
   }
 }
-export const RssFeedModal = withFeedState(RssFeedModalComponent);
+export const AddRssFeedModal = withFeedState(RssFeedModalComponent);
