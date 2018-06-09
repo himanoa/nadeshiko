@@ -1,5 +1,5 @@
 import * as React from "react";
-import { AddRssFeedModal } from "../components/rssFeedModal";
+import { AddRssFeedModal } from "../components/rssFeedAddModal";
 
 export interface State {
   visible: boolean;
