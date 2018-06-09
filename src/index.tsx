@@ -46,7 +46,7 @@ ReactDOM.render(
         </Column>
         <Column
           isSize={10}
-          style={{ ...columnStyle, ...{ marginLeft: "2rem" } }}
+          style={{ ...columnStyle, ...{ marginLeft: "4rem" } }}
         >
           <Switch>
             <Route exact={true} path="/" component={App} />

@@ -24,7 +24,7 @@ const FeedLink = props => {
 };
 
 export const Sidebar = props => (
-  <div style={{ overflowY: "auto" }}>
+  <div style={{ overflowY: "auto", marginLeft: "1rem" }}>
     <Menu>
       <MenuLabel>
         Feeds
