@@ -27,6 +27,7 @@ type State = {
 
 export interface Props {
   visible: boolean;
+  applyFeed: (state: State) => void;
   close: () => void;
 }
 
@@ -46,7 +47,7 @@ class RssFeedModalComponent extends React.Component<
     };
     this.handleInput = this.handleInput.bind(this);
     this.render = this.render.bind(this);
-    this.addFeed = this.addFeed.bind(this);
+    this.clicked = this.clicked.bind(this);
   }
 
   handleInput(event) {
@@ -58,12 +59,12 @@ class RssFeedModalComponent extends React.Component<
     }
   }
 
-  addFeed() {
+  clicked() {
     console.dir(this.props);
     this.props.actions.postFeed(
       this.state.title,
       this.state.url,
-      parseInt(this.state.interval, 10) * 60 * 1000
+      parseInt(this.state.interval, 10) * 60 * 1000 // 分をミリ秒に変換している
     );
     this.props.close();
   }
@@ -105,7 +106,7 @@ class RssFeedModalComponent extends React.Component<
           <ModalCardFooter>
             <Field isGrouped={true}>
               <Control>
-                <Button isColor="primary" onClick={this.addFeed}>
+                <Button isColor="primary" onClick={this.clicked}>
                   Submit
                 </Button>
               </Control>

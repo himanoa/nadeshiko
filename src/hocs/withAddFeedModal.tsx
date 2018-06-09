@@ -6,7 +6,7 @@ export interface State {
 }
 
 export interface Props {}
-export const withAddFeedModal = InnerComponent =>
+export const withFeedModal = InnerComponent =>
   class extends React.Component<Props, State> {
     state: State = { visible: false };
     props: Props;
