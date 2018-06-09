@@ -30,7 +30,7 @@ export const initializeWorker = async (
 
 export const startUpApplicationSaga = function*(action) {
   try {
-    const feeds = yield call(feedRepository.toAsyncArray);
+    const feeds = yield call(feedRepository.toArray);
     for (const feed of feeds) {
       initializeWorker(feed).catch(err => {
         throw err;

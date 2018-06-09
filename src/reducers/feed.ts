@@ -1,7 +1,9 @@
 import { Action } from "./index";
-import { RssFeed } from "../models/rssFeed";
+import { RssFeed, UpdateParams as FeedUpdateParams } from "../models/rssFeed";
 
 export const POST_FEED = "feed/post";
+export const UPDATE_FEED = "feed/update";
+export const UPDATE_FEED_FAILED = "feed/updateFailed";
 export const POST_FEED_SUCCESS = "feed/postSuccess";
 export const POST_FEED_FAITAL = "feed/postFaital";
 export const INITIAL_FEED = "feed/initial";
@@ -19,6 +21,22 @@ export interface PostFeedPayload {
 }
 
 export const actionCreators = {
+  updateFeed: (
+    id: number,
+    name: string,
+    url: string,
+    updateInterval: number
+  ): Action<FeedUpdateParams> => {
+    return {
+      type: UPDATE_FEED,
+      payload: {
+        id,
+        name,
+        url,
+        updateInterval
+      }
+    };
+  },
   postFeed: (
     name: string,
     url: string,

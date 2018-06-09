@@ -10,6 +10,13 @@ export interface RssFeed {
   updatedAt?: number;
 }
 
+export type UpdateParams = {
+  id: number;
+  name: string;
+  url: string;
+  updateInterval: number;
+};
+
 export const importFeed = async () => axios.get(url);
 export const scheme = {
   rssFeeds: "++id, name, url, updateInterval, updatedAt"
