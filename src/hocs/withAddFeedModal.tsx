@@ -1,5 +1,5 @@
 import * as React from "react";
-import { AddModal } from "../components/addModal";
+import { RssFeedModal } from "../components/rssFeedModal";
 
 export interface State {
   visible: boolean;
@@ -20,7 +20,7 @@ export const withAddFeedModal = InnerComponent =>
       return (
         <div>
           <InnerComponent visibleModal={this.updateVisible.bind(this, true)} />
-          <AddModal
+          <RssFeedModal
             visible={this.state.visible}
             close={this.updateVisible.bind(this, false)}
           />

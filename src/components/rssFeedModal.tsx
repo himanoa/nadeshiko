@@ -30,7 +30,7 @@ export interface Props {
   close: () => void;
 }
 
-class AddModalComponent extends React.Component<
+class RssFeedModalComponent extends React.Component<
   Props & any,
   State & FeedState
 > {
@@ -119,4 +119,4 @@ class AddModalComponent extends React.Component<
     );
   }
 }
-export const AddModal = withFeedState(AddModalComponent);
+export const RssFeedModal = withFeedState(RssFeedModalComponent);
