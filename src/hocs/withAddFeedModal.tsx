@@ -2,27 +2,39 @@ import * as React from "react";
 import { AddRssFeedModal } from "../components/rssFeedAddModal";
 
 export interface State {
-  visible: boolean;
+  addVisible: boolean;
+  editVisible: boolean;
 }
 
 export interface Props {}
 export const withFeedModal = InnerComponent =>
   class extends React.Component<Props, State> {
-    state: State = { visible: false };
+    state: State = {
+      addVisible: false,
+      editVisible: false
+    };
     props: Props;
     constructor(props: Props) {
       super(props);
     }
-    updateVisible(visible: Boolean): void {
-      this.setState({ visible } as State);
+    updateEditModal(visible: Boolean, id: number): void {
+      this.setState({ ...this.state, ...{ editVisible: visible } } as State);
     }
+
+    updateAddModal(visible: Boolean): void {
+      this.setState({ ...this.state, ...{ addVisible: visible } } as State);
+    }
+
     render(): JSX.Element {
       return (
         <div>
-          <InnerComponent visibleModal={this.updateVisible.bind(this, true)} />
+          <InnerComponent
+            updateEditModal={this.updateEditModal.bind(this, true)}
+            updateAddModal={this.updateAddModal.bind(this, true)}
+          />
           <AddRssFeedModal
-            visible={this.state.visible}
-            close={this.updateVisible.bind(this, false)}
+            visible={this.state.addVisible}
+            close={this.updateAddModal.bind(this, false)}
           />
         </div>
       );
